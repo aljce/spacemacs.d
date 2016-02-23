@@ -246,33 +246,28 @@ It is called immediately after `dotspacemacs/init'.  You are free to put almost
 any user code here.  The exception is org related code, which should be placed
 in `dotspacemacs/user-config'."
   )
-
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
-  (setq-default evil-escape-key-sequence "jk")
+
+  ;; Could not find a non toggle based max frame 
+  (when (not (cdr (assoc 'fullscreen (frame-parameters))))
+    (spacemacs/toggle-maximize-frame))
+
+  (setq-default evil-escape-key-sequence "fd")
 
   (global-vi-tilde-fringe-mode -1)
 
-  ;; If in terminal mode turn off Unicode mode line symbols 
+  ;; If in terminal mode turn off Unicode mode line symbols
   (when (not (display-graphic-p))
     (setq dotspacemacs-mode-line-unicode-symbols nil))
 
   (golden-ratio-mode t)
 
-  (spacemacs/toggle-maximize-frame)
-
-  (setq mu4e-html2text-command "html2text -utf8 -width 72")
-
-  (setq mu4e-view-show-images t)
-  ;; use imagemagick, if available
-  (when (fboundp 'imagemagick-register-types)
-    (imagemagick-register-types))
-
-  (setq mu4e-get-mail-command "offlineimap")
-
   (setq org-agenda-files '("~/org/misc.org"))
+
+  (load "~/.spacemacs.d/mail.el")
 )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
