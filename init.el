@@ -26,22 +26,24 @@ values."
      auto-completion
      ;; better-defaults
      emacs-lisp
+     purescript
+     haskell
      git
      ;; markdown
      org
-     (mu4e  :variables
-            mu4e-installation-path "/usr/share/emacs/site-lisp")
+     ;; (mu4e  :variables
+     ;;        mu4e-installation-path "/usr/share/emacs/site-lisp")
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
-     spell-checking
+     ;; spell-checking
      syntax-checking
      version-control
      spotify
      games
-     haskell
      erc
      xkcd
+     themes-megapack
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -102,9 +104,9 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
+   dotspacemacs-themes '(solarized-light
+                         sspacemacs-dark
                          spacemacs-light
-                         solarized-light
                          solarized-dark
                          leuven
                          monokai
@@ -114,7 +116,7 @@ values."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+                               :size 12
                                :weight normal
                                :width normal
                                :powerline-scale 1.5)
@@ -255,7 +257,7 @@ layers configuration. You are free to put any user code."
   (when (not (cdr (assoc 'fullscreen (frame-parameters))))
     (spacemacs/toggle-maximize-frame))
 
-  (setq-default evil-escape-key-sequence "fd")
+  (setq-default evil-escape-key-sequence "jk")
 
   (global-vi-tilde-fringe-mode -1)
 
@@ -263,11 +265,11 @@ layers configuration. You are free to put any user code."
   (when (not (display-graphic-p))
     (setq dotspacemacs-mode-line-unicode-symbols nil))
 
-  (golden-ratio-mode t)
+  ;; (golden-ratio-mode t)
 
   (setq org-agenda-files '("~/org/misc.org"))
 
-  (load "~/.spacemacs.d/mail.el")
+  ;; (load "~/.spacemacs.d/mail.el")
 )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -278,10 +280,15 @@ layers configuration. You are free to put any user code."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (ws-butler window-numbering volatile-highlights vi-tilde-fringe toc-org spotify spaceline smooth-scrolling restart-emacs rainbow-delimiters popwin persp-mode pcre2el paradox page-break-lines pacmacs org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-spotify helm-projectile helm-mode-manager helm-make helm-flyspell helm-flx helm-descbinds helm-ag google-translate golden-ratio gnuplot flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-jumper evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu elisp-slime-nav define-word clean-aindent-mode buffer-move bracketed-paste auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line 2048-game quelpa package-build use-package which-key bind-key bind-map evil spacemacs-theme))))
+    (ws-butler window-numbering volatile-highlights vi-tilde-fringe toc-org spotify spaceline smooth-scrolling restart-emacs rainbow-delimiters popwin persp-mode pcre2el paradox page-break-lines pacmacs org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-spotify helm-projectile helm-mode-manager helm-make helm-flyspell helm-flx helm-descbinds helm-ag google-translate golden-ratio gnuplot flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-jumper evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu elisp-slime-nav define-word clean-aindent-mode buffer-move bracketed-paste auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line 2048-game quelpa package-build use-package which-key bind-key bind-map evil spacemacs-theme)))
+ '(safe-local-variable-values
+   (quote
+    ((haskell-process-use-ghci . t)
+     (haskell-indent-spaces . 4)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
