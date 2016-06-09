@@ -1,8 +1,8 @@
 post_install() {
 	info "Kyle McKean's .spacemac.d downloaded"
 	mkdir -p "$HOME/.spacemacs.d"
-        ln -s "$PEARL_HOME/packages/default/spacemacs.d/init.el" "$HOME/.spacemacs.d/init.el"	
-	ln -s "$PEARL_HOME/packages/default/spacemacs.d/mail.el" "$HOME/.spacemacs.d/init.el"
+        ln -sf "$PEARL_HOME/packages/default/spacemacs.d/init.el" "$HOME/.spacemacs.d/init.el"	
+	ln -sf "$PEARL_HOME/packages/default/spacemacs.d/mail.el" "$HOME/.spacemacs.d/init.el"
 	info ".spacemacs.d files linked"
 }
 
