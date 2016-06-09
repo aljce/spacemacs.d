@@ -261,6 +261,7 @@ layers configuration. You are free to put any user code."
   (setq-default evil-escape-key-sequence "jk")
 
   (global-vi-tilde-fringe-mode -1)
+  (spacemacs/toggle-highlight-current-line-globally)
 
   ;; If in terminal mode turn off Unicode mode line symbols
   (when (not (display-graphic-p))
