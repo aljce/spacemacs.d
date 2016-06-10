@@ -26,6 +26,7 @@ values."
      auto-completion
      syntax-checking
      intero
+     yaml
      ;; haskell
      emacs-lisp
      purescript
